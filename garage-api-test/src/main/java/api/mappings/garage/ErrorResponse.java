@@ -1,4 +1,4 @@
-package api.mappings.generic;
+package api.mappings.garage;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

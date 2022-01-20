@@ -1,7 +1,7 @@
-package api.retrofit.generic;
+package api.retrofit.garage;
 
 
-import api.mappings.generic.ErrorResponse;
+import api.mappings.garage.ErrorResponse;
 import api.retrofit.RetrofitBuilder;
 import okhttp3.ResponseBody;
 import retrofit2.Converter;

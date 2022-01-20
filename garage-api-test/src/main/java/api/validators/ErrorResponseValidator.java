@@ -1,6 +1,6 @@
 package api.validators;
 
-import api.mappings.generic.ErrorResponse;
+import api.mappings.garage.ErrorResponse;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 

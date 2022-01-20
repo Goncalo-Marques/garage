@@ -1,6 +1,5 @@
-package api.mappings.generic;
+package api.mappings.garage;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

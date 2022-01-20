@@ -1,14 +1,14 @@
-package api.generic;
+package api.garage;
 
-import api.mappings.generic.CreateGenericRequest;
+import api.mappings.garage.CreateGenericRequest;
 import okhttp3.ResponseBody;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.io.IOException;
 
-import static api.retrofit.generic.Generic.createGenericCall;
-import static api.retrofit.generic.Generic.getGenericCall;
+import static api.retrofit.garage.Generic.createGenericCall;
+import static api.retrofit.garage.Generic.getGenericCall;
 import static api.validators.ResponseValidator.assertCreated;
 import static api.validators.ResponseValidator.assertOk;
 

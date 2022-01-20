@@ -1,7 +1,7 @@
-package api.retrofit.generic;
+package api.retrofit.garage;
 
 import api.calls.GenericCalls;
-import api.mappings.generic.CreateGenericRequest;
+import api.mappings.garage.CreateGenericRequest;
 import api.retrofit.RetrofitBuilder;
 import lombok.NoArgsConstructor;
 import okhttp3.ResponseBody;
