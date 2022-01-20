@@ -25,3 +25,11 @@ hs_err_pid*
 # Black-box API
 !garage-api/*
 garage-api/tmp
+garage-api-test/.idea/vcs.xml
+garage-api-test/.gradle/7.3.3/checksums/sha1-checksums.bin
+garage-api-test/.gradle/7.3.3/checksums/md5-checksums.bin
+garage-api-test/.gradle/7.3.3/checksums/checksums.lock
+.idea/workspace.xml
+.idea/vcs.xml
+.idea/modules.xml
+.idea/garage.iml
