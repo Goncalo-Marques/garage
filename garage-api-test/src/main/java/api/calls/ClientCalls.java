@@ -1,28 +1,33 @@
 package api.calls;
 
 import api.mappings.garage.client.ClientRequest;
+import api.mappings.garage.client.ClientResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
 
 import java.util.List;
 
 public interface ClientCalls {
-    String ID="id";
-    String CLIENTID="client/{client}";
-    String CLIENT ="client";
+    // parameters
+    String ID = "id";
+    String REMOVE_VEHICLES = "removeVehicles";
 
-    @GET(CLIENTID)
-    Call<ClientRequest> getClient(@Path(ID) Integer clientID);
+    // paths
+    String CLIENT_BY_ID = "client/{id}";
+    String CLIENT = "client";
+
+    @GET(CLIENT_BY_ID)
+    Call<ClientResponse> getClient(@Path(ID) Integer clientID);
 
     @GET(CLIENT)
-    Call<List<ClientRequest>> getAllClients();
+    Call<List<ClientResponse>> getAllClients();
 
-    @PUT(CLIENT)
-    Call<ClientRequest> updateClient(@Body ClientRequest client);
+    @PUT(CLIENT_BY_ID)
+    Call<Integer> updateClient(@Path(ID) Integer clientID, @Body ClientRequest requestBody);
 
     @POST(CLIENT)
-    Call<ClientRequest> createClient(@Body ClientRequest client);
+    Call<Integer> createClient(@Body ClientRequest requestBody);
 
-    @DELETE(CLIENT)
-    Call<Void> deleteClient(@Path(ID) Integer clientID);
+    @DELETE(CLIENT_BY_ID)
+    Call<Void> deleteClient(@Path(ID) Integer clientID, @Query(REMOVE_VEHICLES) Boolean removeVehicles);
 }

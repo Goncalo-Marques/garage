@@ -1,8 +1,11 @@
 package api.mappings.garage.client;
 
-import java.util.Date;
+import api.mappings.garage.vehicle.GetVehicleResponse;
 
-public class ClientRequest {
+import java.util.Date;
+import java.util.List;
+
+public class ClientResponse {
     private Integer id;
     private String firstName;
     private String lastName;
@@ -14,4 +17,5 @@ public class ClientRequest {
     private Integer nif;
     private Date birthDate;
     private Date clientDate;
+    private List<GetVehicleResponse> vehicles;
 }
