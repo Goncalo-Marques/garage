@@ -23,7 +23,7 @@ public class Client {
     }
 
     // create client
-    public static Response<ClientRequest> createClient(ClientRequest client) throws IOException {
+    public static Response<Integer> createClient(ClientRequest client) throws IOException {
         return clientCalls.createClient(client).execute();
     }
 
