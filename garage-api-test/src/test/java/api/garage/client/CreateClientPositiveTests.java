@@ -1,4 +1,4 @@
-package api.garage.clients;
+package api.garage.client;
 
 public class CreateClientPositiveTests {
 }
