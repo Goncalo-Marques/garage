@@ -28,6 +28,9 @@ hs_err_pid*
 # Build
 build/
 
+# Gradle 
+.gradle/
+
 # Black-box API
 !garage-api/*
 garage-api/tmp
