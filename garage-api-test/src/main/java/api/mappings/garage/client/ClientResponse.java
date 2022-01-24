@@ -1,10 +1,18 @@
 package api.mappings.garage.client;
 
 import api.mappings.garage.vehicle.GetVehicleResponse;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder(toBuilder = true)
 public class ClientResponse {
     private Integer id;
     private String firstName;

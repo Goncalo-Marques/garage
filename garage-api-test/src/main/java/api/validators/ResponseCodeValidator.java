@@ -21,12 +21,11 @@ import static java.net.HttpURLConnection.HTTP_UNAUTHORIZED;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
+/**
+ * Can use this class to check all the most common errors
+ */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class ResponseValidator {
-    /**
-     * Can use this class to check all the most common errors
-     */
-
+public class ResponseCodeValidator {
     public static void assertOk(Response response) {
         assertThat(String.format("Expected response code to be [%s] but was [%s]", HTTP_OK, response.code()), response.code(), is(HTTP_OK));
     }

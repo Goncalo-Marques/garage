@@ -35,7 +35,7 @@ public interface VehicleCalls {
     @POST(VEHICLE)
     Call<Integer> createVehicle(@Body CreateVehicleRequest requestBody);
 
-    @DELETE(VEHICLE_ID)
+    @DELETE(VEHICLE_BY_ID)
     Call<Void> deleteVehicle(@Path(ID) Integer vehicleID);
 
     @DELETE(REMOVE_VEHICLE_CLIENT)
