@@ -25,9 +25,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-    - name: Change directory 
-      run: cd ./garage-api-test
     - name: Make gradlew executable
-      run: chmod +x ./gradlew
+      run: chmod +x ./garage-api-test/gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./garage-api-test/gradlew build
