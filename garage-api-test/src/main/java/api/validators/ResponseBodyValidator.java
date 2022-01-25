@@ -3,12 +3,15 @@ package api.validators;
 import retrofit2.Response;
 
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.notNullValue;
+import static org.hamcrest.Matchers.*;
 
 public class ResponseBodyValidator {
     public static void assertBodyNotNull(Response response) {
         assertThat("Response body should not be null", response.body(), notNullValue());
+    }
+
+    public static void assertBodyNull(Response response) {
+        assertThat("Response body should be null", response.body(), nullValue());
     }
 
     public static void assertID(Integer actual, Integer expected) {
