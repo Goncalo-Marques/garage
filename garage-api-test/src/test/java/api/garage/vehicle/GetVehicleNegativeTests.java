@@ -41,17 +41,17 @@ public class GetVehicleNegativeTests {
         Response<Integer> createResponse = Vehicle.createVehicle(vehicle);
         assertCreated(createResponse);
         createdVehicleID = createResponse.body();
-        Integer idToTest = createdVehicleID;
-        assertIDNotNull(idToTest);
+        Integer vehicleIDToTest = createdVehicleID;
+        assertIDNotNull(vehicleIDToTest);
 
-        Response<Void> response = Vehicle.deleteVehicleByID(idToTest);
+        Response<Void> response = Vehicle.deleteVehicleByID(vehicleIDToTest);
         assertNoContent(response);
         createdVehicleID = null;
 
-        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(idToTest);
+        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(vehicleIDToTest);
         assertNotFound(getResponse);
 
-        ErrorResponse expectedResponse = errorVehicleNotFound(idToTest);
+        ErrorResponse expectedResponse = errorVehicleNotFound(vehicleIDToTest);
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
