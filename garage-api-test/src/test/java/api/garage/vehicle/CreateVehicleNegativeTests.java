@@ -20,8 +20,10 @@ public class CreateVehicleNegativeTests {
     @AfterMethod
     public void deleteVehicle() throws IOException {
         if (createdVehicleID == null) return;
+
         Response<Void> response = Vehicle.deleteVehicleByID(createdVehicleID);
         assertNoContent(response);
+
         createdVehicleID = null;
     }
 
@@ -39,10 +41,14 @@ public class CreateVehicleNegativeTests {
         ErrorResponse expectedResponse = ErrorResponse.builder()
                 .status(400)
                 .error("Bad Request")
-                .message("Cannot invoke \\\"String.matches(String)\\\" because \\\"plate\\\" is null")
+                .message("Invalid body")
                 .path("/vehicle")
                 .build();
-        // TODO: currently not returning the right status. Actual: 500; Expected: 400
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse, true);
     }
+
+    // TODO: create plate that does not exists
+    // TODO: craete plate not valid
+    // TODO: create year greater than today
+    // TODO: verificar `active`
 }

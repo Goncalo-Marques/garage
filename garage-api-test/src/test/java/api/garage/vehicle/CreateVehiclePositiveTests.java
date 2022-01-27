@@ -9,6 +9,7 @@ import retrofit2.Response;
 
 import java.io.IOException;
 
+import static api.garage.helper.VehicleResquests.vehiclePositive;
 import static api.validators.ResponseBodyValidator.assertBodyNotNull;
 import static api.validators.ResponseCodeValidator.*;
 
@@ -18,21 +19,16 @@ public class CreateVehiclePositiveTests {
     @AfterMethod
     public void deleteVehicle() throws IOException {
         if (createdVehicleID == null) return;
+
         Response<Void> response = Vehicle.deleteVehicleByID(createdVehicleID);
         assertNoContent(response);
+
         createdVehicleID = null;
     }
 
     @Test(description = "ID: GT0001")
     public void createVehicleTest() throws IOException {
-        CreateVehicleRequest requestBody = CreateVehicleRequest.builder()
-                .brand("Tesla")
-                .model("Model S")
-                .year(2012)
-                .type("Electric")
-                .plate("GG-04-20")
-                .active(false)
-                .build();
+        CreateVehicleRequest requestBody = vehiclePositive();
 
         Response<Integer> createResponse = Vehicle.createVehicle(requestBody);
         assertBodyNotNull(createResponse);
