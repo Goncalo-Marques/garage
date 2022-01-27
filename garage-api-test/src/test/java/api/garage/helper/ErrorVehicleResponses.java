@@ -3,6 +3,15 @@ package api.garage.helper;
 import api.mappings.garage.ErrorResponse;
 
 public class ErrorVehicleResponses {
+    public static ErrorResponse errorVehicleInvalidBody() {
+        return ErrorResponse.builder()
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid body")
+                .path("/vehicle")
+                .build();
+    }
+
     public static ErrorResponse errorVehicleInvalidID(Integer vehicleID) {
         return ErrorResponse.builder()
                 .status(400)

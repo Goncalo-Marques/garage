@@ -9,6 +9,7 @@ import retrofit2.Response;
 
 import java.io.IOException;
 
+import static api.garage.helper.ErrorVehicleResponses.errorVehicleInvalidBody;
 import static api.retrofit.garage.Error.getErrorResponse;
 import static api.validators.ErrorResponseValidator.assertErrorResponse;
 import static api.validators.ResponseCodeValidator.assertBadRequest;
@@ -38,12 +39,7 @@ public class CreateVehicleNegativeTests {
 
         assertBadRequest(createResponse);
 
-        ErrorResponse expectedResponse = ErrorResponse.builder()
-                .status(400)
-                .error("Bad Request")
-                .message("Invalid body")
-                .path("/vehicle")
-                .build();
+        ErrorResponse expectedResponse = errorVehicleInvalidBody();
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse, true);
     }
 
