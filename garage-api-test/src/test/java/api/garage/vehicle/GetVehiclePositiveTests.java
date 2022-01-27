@@ -11,6 +11,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.List;
 
+import static api.garage.helper.VehicleResquests.vehiclePositive;
 import static api.validators.ListValidator.assertListHasSize;
 import static api.validators.ListValidator.assertListNotEmpty;
 import static api.validators.ResponseBodyValidator.assertBodyNotNull;
@@ -25,14 +26,7 @@ public class GetVehiclePositiveTests {
 
     @BeforeMethod
     public void createVehicle() throws IOException {
-        createdVehicleRequest = CreateVehicleRequest.builder()
-                .brand("Tesla")
-                .model("Model S")
-                .year(2012)
-                .type("Electric")
-                .plate("GG-04-20")
-                .active(false)
-                .build();
+        createdVehicleRequest = vehiclePositive();
 
         Response<Integer> response = Vehicle.createVehicle(createdVehicleRequest);
         assertCreated(response);
@@ -43,8 +37,10 @@ public class GetVehiclePositiveTests {
     @AfterMethod
     public void deleteVehicle() throws IOException {
         if (createdVehicleID == null) return;
+
         Response<Void> response = Vehicle.deleteVehicleByID(createdVehicleID);
         assertNoContent(response);
+
         createdVehicleID = null;
         createdVehicleRequest = null;
     }
