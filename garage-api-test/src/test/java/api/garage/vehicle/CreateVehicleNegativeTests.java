@@ -40,7 +40,7 @@ public class CreateVehicleNegativeTests {
         assertBadRequest(createResponse);
 
         ErrorResponse expectedResponse = errorVehicleInvalidBody();
-        assertErrorResponse(getErrorResponse(createResponse), expectedResponse, true);
+        assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
     // TODO: create plate that does not exists

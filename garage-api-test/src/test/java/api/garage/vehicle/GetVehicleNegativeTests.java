@@ -52,7 +52,7 @@ public class GetVehicleNegativeTests {
         assertNotFound(getResponse);
 
         ErrorResponse expectedResponse = errorVehicleNotFound(idToTest);
-        assertErrorResponse(getErrorResponse(getResponse), expectedResponse, true);
+        assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
     @Test(description = "ID: GT0001")
@@ -62,7 +62,7 @@ public class GetVehicleNegativeTests {
         assertBadRequest(getResponse);
 
         ErrorResponse expectedResponse = errorVehicleInvalidID(vehicleIDToTest);
-        assertErrorResponse(getErrorResponse(getResponse), expectedResponse, true);
+        assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
     @Test(description = "ID: GT0001")
@@ -72,6 +72,6 @@ public class GetVehicleNegativeTests {
         assertBadRequest(getResponse);
 
         ErrorResponse expectedResponse = errorVehicleInvalidID(vehicleIDToTest);
-        assertErrorResponse(getErrorResponse(getResponse), expectedResponse, true);
+        assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 }

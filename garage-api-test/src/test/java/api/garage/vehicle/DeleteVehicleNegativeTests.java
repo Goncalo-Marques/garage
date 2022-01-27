@@ -50,7 +50,7 @@ public class DeleteVehicleNegativeTests {
         assertNotFound(getResponse);
 
         ErrorResponse expectedResponse = errorVehicleNotFound(idToTest);
-        assertErrorResponse(getErrorResponse(getResponse), expectedResponse, true);
+        assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
     // delete vehicle duas vezes (esperar not found)
