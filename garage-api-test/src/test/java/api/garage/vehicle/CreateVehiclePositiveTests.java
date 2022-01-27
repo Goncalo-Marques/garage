@@ -11,7 +11,9 @@ import java.io.IOException;
 
 import static api.garage.helper.VehicleResquests.vehiclePositive;
 import static api.validators.ResponseBodyValidator.assertBodyNotNull;
+import static api.validators.ResponseBodyValidator.assertID;
 import static api.validators.ResponseCodeValidator.*;
+import static api.validators.VehicleValidator.assertVehicleResponseWithCreateRequest;
 
 public class CreateVehiclePositiveTests {
     private Integer createdVehicleID;
@@ -28,14 +30,17 @@ public class CreateVehiclePositiveTests {
 
     @Test(description = "ID: GT0001")
     public void createVehicleTest() throws IOException {
-        CreateVehicleRequest requestBody = vehiclePositive();
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
 
-        Response<Integer> createResponse = Vehicle.createVehicle(requestBody);
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
         assertBodyNotNull(createResponse);
         createdVehicleID = createResponse.body();
         assertCreated(createResponse);
 
         Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(createdVehicleID);
         assertOk(getResponse);
+
+        assertVehicleResponseWithCreateRequest(getResponse.body(), createdVehicleRequest);
+        assertID(getResponse.body().getId(), createdVehicleID);
     }
 }
