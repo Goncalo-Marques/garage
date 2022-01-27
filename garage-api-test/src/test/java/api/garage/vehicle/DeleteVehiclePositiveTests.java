@@ -10,11 +10,41 @@ import retrofit2.Response;
 
 import java.io.IOException;
 
-import static api.validators.ResponseBodyValidator.assertBodyNotNull;
-import static api.validators.ResponseBodyValidator.assertID;
+import static api.garage.helper.VehicleResquests.vehiclePositive;
 import static api.validators.ResponseCodeValidator.*;
-import static api.validators.VehicleValidator.assertVehicleResponseWithCreateRequest;
 
 public class DeleteVehiclePositiveTests {
+    private Integer createdVehicleID;
 
+    @BeforeMethod
+    public void createVehicle() throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+
+        Response<Integer> response = Vehicle.createVehicle(createdVehicleRequest);
+        assertCreated(response);
+
+        createdVehicleID = response.body();
+    }
+
+    @AfterMethod
+    public void deleteVehicle() throws IOException {
+        if (createdVehicleID == null) return;
+
+        Response<Void> response = Vehicle.deleteVehicleByID(createdVehicleID);
+        assertNoContent(response);
+
+        createdVehicleID = null;
+    }
+
+    @Test(description = "ID: GT0001")
+    public void deleteVehicleTest() throws IOException {
+        Integer idToTest = createdVehicleID;
+
+        Response<Void> deleteResponse = Vehicle.deleteVehicleByID(idToTest);
+        assertNoContent(deleteResponse);
+        createdVehicleID = null;
+
+        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(idToTest);
+        assertNotFound(getResponse);
+    }
 }
