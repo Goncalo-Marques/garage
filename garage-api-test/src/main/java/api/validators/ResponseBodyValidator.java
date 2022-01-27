@@ -17,4 +17,8 @@ public class ResponseBodyValidator {
     public static void assertID(Integer actual, Integer expected) {
         assertThat("ID is not the expected", actual, is(expected));
     }
+
+    public static void assertIDNotNull(Integer actual) {
+        assertThat("ID should not be null", actual, notNullValue());
+    }
 }
