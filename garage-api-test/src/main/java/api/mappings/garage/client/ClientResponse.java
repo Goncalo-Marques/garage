@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +24,7 @@ public class ClientResponse {
     private String country;
     private Integer phoneNumber;
     private Integer nif;
-    private Date birthDate;
-    private Date clientDate;
+    private LocalDate birthDate;
+    private LocalDate clientDate;
     private List<GetVehicleResponse> vehicles;
 }
