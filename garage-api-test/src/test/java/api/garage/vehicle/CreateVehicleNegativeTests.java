@@ -29,12 +29,12 @@ public class CreateVehicleNegativeTests {
     public void createVehicleNullFieldsTest() throws IOException {
         CreateVehicleRequest requestBody = CreateVehicleRequest.builder().build();
 
-        Response<Integer> createdResponse = Vehicle.createVehicle(requestBody);
+        Response<Integer> createResponse = Vehicle.createVehicle(requestBody);
 
         // in case the vehicle is created by mistake
-        createdVehicleID = createdResponse.body();
+        createdVehicleID = createResponse.body();
 
-        assertBadRequest(createdResponse);
+        assertBadRequest(createResponse);
 
         ErrorResponse expectedResponse = ErrorResponse.builder()
                 .status(400)
@@ -42,6 +42,7 @@ public class CreateVehicleNegativeTests {
                 .message("Cannot invoke \\\"String.matches(String)\\\" because \\\"plate\\\" is null")
                 .path("/vehicle")
                 .build();
-        assertErrorResponse(getErrorResponse(createdResponse), expectedResponse, true);
+        // TODO: currently not returning the right status. Actual: 500; Expected: 400
+        assertErrorResponse(getErrorResponse(createResponse), expectedResponse, true);
     }
 }

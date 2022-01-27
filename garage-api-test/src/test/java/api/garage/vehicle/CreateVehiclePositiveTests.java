@@ -34,10 +34,10 @@ public class CreateVehiclePositiveTests {
                 .active(false)
                 .build();
 
-        Response<Integer> createdResponse = Vehicle.createVehicle(requestBody);
-        assertBodyNotNull(createdResponse);
-        createdVehicleID = createdResponse.body();
-        assertCreated(createdResponse);
+        Response<Integer> createResponse = Vehicle.createVehicle(requestBody);
+        assertBodyNotNull(createResponse);
+        createdVehicleID = createResponse.body();
+        assertCreated(createResponse);
 
         Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(createdVehicleID);
         assertOk(getResponse);
