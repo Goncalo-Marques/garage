@@ -43,8 +43,8 @@ public class CreateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    // TODO: create plate that does not exists
-    // TODO: craete plate not valid
+    // TODO: create plate that does alreadt exists
+    // TODO: create invalid plate (data set, entre eles null)
     // TODO: create year greater than today
     // TODO: verificar `active`
 }

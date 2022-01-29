@@ -2,7 +2,6 @@ package api.garage.vehicle;
 
 import api.mappings.garage.ErrorResponse;
 import api.mappings.garage.vehicle.CreateVehicleRequest;
-import api.mappings.garage.vehicle.GetVehicleResponse;
 import api.retrofit.garage.Vehicle;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;

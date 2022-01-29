@@ -10,14 +10,13 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.*;
 
 public class ClientValidator {
-    public static void assertClientResponse(ClientResponse actual, ClientRequest expected){
+    public static void assertClientResponse(ClientResponse actual, ClientRequest expected) {
         if (expected == null) {
             assertThat("Response should be null", actual, nullValue());
             return;
-        }else{
-            assertThat("Response should not be null", actual, notNullValue());
         }
 
+        assertThat("Response should not be null", actual, notNullValue());
         assertThat("First name is not the expected", actual.getFirstName(), is(expected.getFirstName()));
         assertThat("Last name is not the expected", actual.getLastName(), is(expected.getLastName()));
         assertThat("Address is not the expected", actual.getAddress(), is(expected.getAddress()));

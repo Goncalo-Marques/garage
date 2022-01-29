@@ -10,10 +10,9 @@ public class DateValidator {
         if (expected == null) {
             assertThat("Date should be null", actual, nullValue());
             return;
-        } else {
-            assertThat("Date should not be null", actual, notNullValue());
         }
 
+        assertThat("Date should not be null", actual, notNullValue());
         assertThat("Date is not the expected", actual, is(expected));
     }
 
@@ -21,10 +20,9 @@ public class DateValidator {
         if (expected == null) {
             assertThat("Date should be null", actual, nullValue());
             return;
-        } else {
-            assertThat("Date should not be null", actual, notNullValue());
         }
 
+        assertThat("Date should not be null", actual, notNullValue());
         assertThat("Date is not the expected", (actual.isBefore(expected) || actual.isEqual(expected)));
     }
 }

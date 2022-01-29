@@ -43,4 +43,6 @@ public class CreateVehiclePositiveTests {
         assertVehicleResponseWithCreateRequest(getResponse.body(), createdVehicleRequest);
         assertID(getResponse.body().getId(), createdVehicleID);
     }
+
+    // TODO: create valid plate (data set)
 }
