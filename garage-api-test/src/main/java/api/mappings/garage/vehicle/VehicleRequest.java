@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class CreateVehicleRequest {
+public class VehicleRequest {
     private String brand;
     private String model;
     private Integer year;

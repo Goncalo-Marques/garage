@@ -1,7 +1,7 @@
 package api.garage.vehicle;
 
-import api.mappings.garage.vehicle.CreateVehicleRequest;
-import api.mappings.garage.vehicle.GetVehicleResponse;
+import api.mappings.garage.vehicle.VehicleRequest;
+import api.mappings.garage.vehicle.VehicleResponse;
 import api.retrofit.garage.Vehicle;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -18,7 +18,7 @@ public class DeleteVehiclePositiveTests {
 
     @BeforeMethod
     public void createVehicle() throws IOException {
-        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        VehicleRequest createdVehicleRequest = vehiclePositive();
 
         Response<Integer> response = Vehicle.createVehicle(createdVehicleRequest);
         assertCreated(response);
@@ -44,7 +44,7 @@ public class DeleteVehiclePositiveTests {
         assertNoContent(deleteResponse);
         createdVehicleID = null;
 
-        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(idToTest);
+        Response<VehicleResponse> getResponse = Vehicle.getVehicleByID(idToTest);
         assertNotFound(getResponse);
     }
 }

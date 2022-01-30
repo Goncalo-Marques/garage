@@ -1,7 +1,7 @@
 package api.garage.vehicle;
 
 import api.mappings.garage.ErrorResponse;
-import api.mappings.garage.vehicle.CreateVehicleRequest;
+import api.mappings.garage.vehicle.VehicleRequest;
 import api.retrofit.garage.Vehicle;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -32,7 +32,7 @@ public class DeleteVehicleNegativeTests {
 
     @Test(description = "ID: GT0001")
     public void deleteNonExistentVehicleTest() throws IOException {
-        CreateVehicleRequest vehicle = vehiclePositive();
+        VehicleRequest vehicle = vehiclePositive();
 
         Response<Integer> createResponse = Vehicle.createVehicle(vehicle);
         assertCreated(createResponse);

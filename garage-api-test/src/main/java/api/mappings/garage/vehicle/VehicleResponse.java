@@ -9,9 +9,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class UpdateVehicleRequest {
+public class VehicleResponse {
+    private Integer id;
+    private Integer client;
     private String brand;
     private String model;
+    private Integer year;
+    private String type;
     private String plate;
     private Boolean active;
 }

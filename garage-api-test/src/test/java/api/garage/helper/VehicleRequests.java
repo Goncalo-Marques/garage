@@ -1,10 +1,10 @@
 package api.garage.helper;
 
-import api.mappings.garage.vehicle.CreateVehicleRequest;
+import api.mappings.garage.vehicle.VehicleRequest;
 
 public class VehicleRequests {
-    public static CreateVehicleRequest vehiclePositive() {
-        return CreateVehicleRequest.builder()
+    public static VehicleRequest vehiclePositive() {
+        return VehicleRequest.builder()
                 .brand("Tesla")
                 .model("Model S")
                 .year(2012)

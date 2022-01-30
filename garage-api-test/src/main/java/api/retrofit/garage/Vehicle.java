@@ -1,9 +1,8 @@
 package api.retrofit.garage;
 
 import api.calls.VehicleCalls;
-import api.mappings.garage.vehicle.CreateVehicleRequest;
-import api.mappings.garage.vehicle.GetVehicleResponse;
-import api.mappings.garage.vehicle.UpdateVehicleRequest;
+import api.mappings.garage.vehicle.VehicleRequest;
+import api.mappings.garage.vehicle.VehicleResponse;
 import api.retrofit.RetrofitBuilder;
 import retrofit2.Response;
 
@@ -14,22 +13,22 @@ public class Vehicle {
     private static final VehicleCalls vehicleCalls = new RetrofitBuilder().getRetrofit().create(VehicleCalls.class);
 
     // get vehicle by id
-    public static Response<GetVehicleResponse> getVehicleByID(Integer vehicleID) throws IOException {
+    public static Response<VehicleResponse> getVehicleByID(Integer vehicleID) throws IOException {
         return vehicleCalls.getVehicle(vehicleID).execute();
     }
 
     // get all vehicles
-    public static Response<List<GetVehicleResponse>> getAllVehicles() throws IOException {
+    public static Response<List<VehicleResponse>> getAllVehicles() throws IOException {
         return vehicleCalls.getAllVehicles().execute();
     }
 
     // create vehicle
-    public static Response<Integer> createVehicle(CreateVehicleRequest vehicle) throws IOException {
+    public static Response<Integer> createVehicle(VehicleRequest vehicle) throws IOException {
         return vehicleCalls.createVehicle(vehicle).execute();
     }
 
     // update vehicle
-    public static Response<Integer> updateVehicle(Integer vehicleID, UpdateVehicleRequest vehicle) throws IOException {
+    public static Response<Integer> updateVehicle(Integer vehicleID, VehicleRequest vehicle) throws IOException {
         return vehicleCalls.updateVehicle(vehicleID, vehicle).execute();
     }
 

@@ -1,7 +1,7 @@
 package api.garage.vehicle;
 
 import api.mappings.garage.ErrorResponse;
-import api.mappings.garage.vehicle.CreateVehicleRequest;
+import api.mappings.garage.vehicle.VehicleRequest;
 import api.retrofit.garage.Vehicle;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
@@ -23,7 +23,7 @@ public class CreateVehicleNegativeTests {
     private List<Integer> createdVehicleIDs = new ArrayList<>();
 
     @AfterMethod
-    public void deleteVehicle() throws IOException {
+    public void deleteVehicles() throws IOException {
         if (createdVehicleIDs == null) return;
 
         for (int i = 0; i < createdVehicleIDs.size(); i++) {
@@ -37,7 +37,7 @@ public class CreateVehicleNegativeTests {
 
     @Test(description = "ID: GT0001")
     public void createVehicleNullFieldsTest() throws IOException {
-        CreateVehicleRequest requestBody = CreateVehicleRequest.builder().build();
+        VehicleRequest requestBody = VehicleRequest.builder().build();
 
         Response<Integer> createResponse = Vehicle.createVehicle(requestBody);
         createdVehicleIDs.add(createResponse.body()); // in case the vehicle is created by mistake
@@ -49,7 +49,7 @@ public class CreateVehicleNegativeTests {
 
     @Test(description = "ID: GT0001")
     public void createVehicleDuplicatedPlateTest() throws IOException {
-        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        VehicleRequest createdVehicleRequest = vehiclePositive();
 
         Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
         createdVehicleIDs.add(createResponse.body());
@@ -72,7 +72,7 @@ public class CreateVehicleNegativeTests {
 
     @Test(description = "ID: GT0001", dataProvider = "dataProviderInvalidPlates")
     public void createVehicleWithInvalidPlateTest(String vehiclePlateToTest) throws IOException {
-        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        VehicleRequest createdVehicleRequest = vehiclePositive();
         createdVehicleRequest.setPlate(vehiclePlateToTest);
 
         Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
@@ -85,7 +85,7 @@ public class CreateVehicleNegativeTests {
 
     @Test(description = "ID: GT0001")
     public void createVehicleWithYearGreaterThanTodayTest() throws IOException {
-        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        VehicleRequest createdVehicleRequest = vehiclePositive();
         createdVehicleRequest.setYear(LocalDate.now().plusYears(1).getYear());
 
         Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
@@ -93,6 +93,19 @@ public class CreateVehicleNegativeTests {
         assertBadRequest(createResponse);
 
         ErrorResponse expectedResponse = errorVehicleInvalidYear();
+        assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
+    }
+
+    @Test(description = "ID: GT0001")
+    public void createVehicleWithEmptyActiveStatusTest() throws IOException {
+        VehicleRequest createdVehicleRequest = vehiclePositive();
+        createdVehicleRequest.setActive(null);
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        createdVehicleIDs.add(createResponse.body()); // in case the vehicle is created by mistake
+        assertBadRequest(createResponse);
+
+        ErrorResponse expectedResponse = errorVehicleInvalidActiveStatus();
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 }

@@ -1,8 +1,7 @@
 package api.calls;
 
-import api.mappings.garage.vehicle.CreateVehicleRequest;
-import api.mappings.garage.vehicle.GetVehicleResponse;
-import api.mappings.garage.vehicle.UpdateVehicleRequest;
+import api.mappings.garage.vehicle.VehicleRequest;
+import api.mappings.garage.vehicle.VehicleResponse;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -21,19 +20,19 @@ public interface VehicleCalls {
     String REMOVE_VEHICLE_CLIENT = "vehicle/{vehicleId}/client/";
 
     @GET(VEHICLE_BY_ID)
-    Call<GetVehicleResponse> getVehicle(@Path(ID) Integer vehicleID);
+    Call<VehicleResponse> getVehicle(@Path(ID) Integer vehicleID);
 
     @GET(VEHICLE)
-    Call<List<GetVehicleResponse>> getAllVehicles();
+    Call<List<VehicleResponse>> getAllVehicles();
 
     @PUT(ADD_VEHICLE_CLIENT)
     Call<Void> addVehicleToClient(@Path(VEHICLE_ID) Integer vehicleID, @Path(CLIENT_ID) Integer clientID);
 
     @PUT(VEHICLE_BY_ID)
-    Call<Integer> updateVehicle(@Path(ID) Integer vehicleID, @Body UpdateVehicleRequest requestBody);
+    Call<Integer> updateVehicle(@Path(ID) Integer vehicleID, @Body VehicleRequest requestBody);
 
     @POST(VEHICLE)
-    Call<Integer> createVehicle(@Body CreateVehicleRequest requestBody);
+    Call<Integer> createVehicle(@Body VehicleRequest requestBody);
 
     @DELETE(VEHICLE_BY_ID)
     Call<Void> deleteVehicle(@Path(ID) Integer vehicleID);

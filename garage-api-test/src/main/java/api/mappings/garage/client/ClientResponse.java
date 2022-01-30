@@ -1,13 +1,12 @@
 package api.mappings.garage.client;
 
-import api.mappings.garage.vehicle.GetVehicleResponse;
+import api.mappings.garage.vehicle.VehicleResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -26,5 +25,5 @@ public class ClientResponse {
     private Integer nif;
     private LocalDate birthDate;
     private LocalDate clientDate;
-    private List<GetVehicleResponse> vehicles;
+    private List<VehicleResponse> vehicles;
 }

@@ -1,6 +1,5 @@
 package api.garage.client;
 
-import api.mappings.garage.ErrorResponse;
 import api.mappings.garage.client.ClientRequest;
 import api.retrofit.garage.Client;
 import org.testng.annotations.AfterMethod;
@@ -12,7 +11,8 @@ import java.io.IOException;
 import static api.garage.helper.ErrorClientResponses.errorClientBody;
 import static api.retrofit.garage.Error.getErrorResponse;
 import static api.validators.ErrorResponseValidator.assertErrorResponse;
-import static api.validators.ResponseCodeValidator.*;
+import static api.validators.ResponseCodeValidator.assertBadRequest;
+import static api.validators.ResponseCodeValidator.assertNoContent;
 
 public class CreateClientNegativeTests {
     private Integer createClientID;
