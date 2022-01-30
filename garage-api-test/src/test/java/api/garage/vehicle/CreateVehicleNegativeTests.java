@@ -4,28 +4,35 @@ import api.mappings.garage.ErrorResponse;
 import api.mappings.garage.vehicle.CreateVehicleRequest;
 import api.retrofit.garage.Vehicle;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
-import static api.garage.helper.ErrorVehicleResponses.errorVehicleInvalidBody;
+import static api.garage.helper.ErrorVehicleResponses.*;
+import static api.garage.helper.VehicleRequests.vehiclePositive;
 import static api.retrofit.garage.Error.getErrorResponse;
 import static api.validators.ErrorResponseValidator.assertErrorResponse;
-import static api.validators.ResponseCodeValidator.assertBadRequest;
-import static api.validators.ResponseCodeValidator.assertNoContent;
+import static api.validators.ResponseCodeValidator.*;
 
 public class CreateVehicleNegativeTests {
-    private Integer createdVehicleID;
+    private List<Integer> createdVehicleIDs = new ArrayList<>();
 
     @AfterMethod
     public void deleteVehicle() throws IOException {
-        if (createdVehicleID == null) return;
+        if (createdVehicleIDs == null) return;
 
-        Response<Void> response = Vehicle.deleteVehicleByID(createdVehicleID);
-        assertNoContent(response);
+        for (int i = 0; i < createdVehicleIDs.size(); i++) {
+            if (createdVehicleIDs.get(i) == null) continue;
+            Response<Void> response = Vehicle.deleteVehicleByID(createdVehicleIDs.get(i));
+            assertNoContent(response);
+        }
 
-        createdVehicleID = null;
+        createdVehicleIDs.clear();
     }
 
     @Test(description = "ID: GT0001")
@@ -33,18 +40,59 @@ public class CreateVehicleNegativeTests {
         CreateVehicleRequest requestBody = CreateVehicleRequest.builder().build();
 
         Response<Integer> createResponse = Vehicle.createVehicle(requestBody);
-
-        // in case the vehicle is created by mistake
-        createdVehicleID = createResponse.body();
-
+        createdVehicleIDs.add(createResponse.body()); // in case the vehicle is created by mistake
         assertBadRequest(createResponse);
 
         ErrorResponse expectedResponse = errorVehicleInvalidBody();
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    // TODO: create plate that does alreadt exists
-    // TODO: create invalid plate (data set, entre eles null)
-    // TODO: create year greater than today
-    // TODO: verificar `active`
+    @Test(description = "ID: GT0001")
+    public void createVehicleDuplicatedPlateTest() throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        createdVehicleIDs.add(createResponse.body());
+        assertCreated(createResponse);
+
+        createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        createdVehicleIDs.add(createResponse.body());  // in case the vehicle is created by mistake
+        assertBadRequest(createResponse);
+
+        ErrorResponse expectedResponse = errorVehicleDuplicatedPlate();
+        assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
+    }
+
+    @DataProvider(name = "dataProviderInvalidPlates")
+    public Object[][] dataProviderInvalidPlates() {
+        return new Object[][]{
+                {"ZZ99ZZ"}, {"99ZZ99"}, {"ZZ-ZZ-99"}, {"99-ZZ-ZZ"},
+                {"ZZ-ZZ-ZZ"}, {"99-99-99"}, {""}, {null}};
+    }
+
+    @Test(description = "ID: GT0001", dataProvider = "dataProviderInvalidPlates")
+    public void createVehicleWithInvalidPlateTest(String vehiclePlateToTest) throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        createdVehicleRequest.setPlate(vehiclePlateToTest);
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        createdVehicleIDs.add(createResponse.body()); // in case the vehicle is created by mistake
+        assertBadRequest(createResponse);
+
+        ErrorResponse expectedResponse = errorVehicleInvalidPlate();
+        assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
+    }
+
+    @Test(description = "ID: GT0001")
+    public void createVehicleWithYearGreaterThanTodayTest() throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        createdVehicleRequest.setYear(LocalDate.now().plusYears(1).getYear());
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        createdVehicleIDs.add(createResponse.body()); // in case the vehicle is created by mistake
+        assertBadRequest(createResponse);
+
+        ErrorResponse expectedResponse = errorVehicleInvalidYear();
+        assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
+    }
 }

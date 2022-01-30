@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import static api.garage.helper.VehicleRequests.vehiclePositive;
 import static api.validators.ResponseBodyValidator.assertBodyNotNull;
@@ -52,9 +53,43 @@ public class CreateVehiclePositiveTests {
     }
 
     @Test(description = "ID: GT0001", dataProvider = "dataProviderValidPlates")
-    public void createVehiclesWithValidPlatesTest(String vehiclePlateToTest) throws IOException {
+    public void createVehicleWithValidPlateTest(String vehiclePlateToTest) throws IOException {
         CreateVehicleRequest createdVehicleRequest = vehiclePositive();
         createdVehicleRequest.setPlate(vehiclePlateToTest);
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        assertBodyNotNull(createResponse);
+        createdVehicleID = createResponse.body();
+        assertCreated(createResponse);
+
+        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(createdVehicleID);
+        assertOk(getResponse);
+
+        assertVehicleResponseWithCreateRequest(getResponse.body(), createdVehicleRequest);
+        assertID(getResponse.body().getId(), createdVehicleID);
+    }
+
+    @Test(description = "ID: GT0001")
+    public void createVehicleWithYearEqualToTodayTest() throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        createdVehicleRequest.setYear(LocalDate.now().getYear());
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        assertBodyNotNull(createResponse);
+        createdVehicleID = createResponse.body();
+        assertCreated(createResponse);
+
+        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(createdVehicleID);
+        assertOk(getResponse);
+
+        assertVehicleResponseWithCreateRequest(getResponse.body(), createdVehicleRequest);
+        assertID(getResponse.body().getId(), createdVehicleID);
+    }
+
+    @Test(description = "ID: GT0001")
+    public void createVehicleWithYearLessThanTodayTest() throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        createdVehicleRequest.setYear(LocalDate.now().minusYears(1).getYear());
 
         Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
         assertBodyNotNull(createResponse);
