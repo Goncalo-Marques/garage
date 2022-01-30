@@ -1,6 +1,5 @@
 package api.garage.client;
 
-import api.garage.helper.ClientRequests;
 import api.mappings.garage.ErrorResponse;
 import api.mappings.garage.client.ClientRequest;
 import api.mappings.garage.client.ClientResponse;

@@ -17,8 +17,6 @@ import static api.validators.ErrorResponseValidator.assertErrorResponse;
 import static api.validators.ResponseBodyValidator.assertIDNotNull;
 import static api.validators.ResponseCodeValidator.*;
 
-// TODO: testar apagar manualmente veiculos com id acima de 2147483647 (int32)
-// deve retornar 400, mas so pode ser testado manualmente (documentar eventualmente no relatorio)
 public class DeleteVehicleNegativeTests {
     private Integer createdVehicleID;
 
