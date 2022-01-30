@@ -55,6 +55,16 @@ public class ErrorVehicleResponses {
                 .build();
     }
 
+    public static ErrorResponse errorVehicleInvalidActiveStatus() {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid Active status")
+                .path("/vehicle")
+                .build();
+    }
+
     public static ErrorResponse errorVehicleNotFound(Integer vehicleID) {
         return ErrorResponse.builder()
                 .timestamp(new Timestamp(System.currentTimeMillis()))
