@@ -25,6 +25,36 @@ public class ErrorVehicleResponses {
                 .build();
     }
 
+    public static ErrorResponse errorVehicleInvalidPlate() {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid Plate")
+                .path("/vehicle")
+                .build();
+    }
+
+    public static ErrorResponse errorVehicleDuplicatedPlate() {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Duplicated Plate")
+                .path("/vehicle")
+                .build();
+    }
+
+    public static ErrorResponse errorVehicleInvalidYear() {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid Year")
+                .path("/vehicle")
+                .build();
+    }
+
     public static ErrorResponse errorVehicleNotFound(Integer vehicleID) {
         return ErrorResponse.builder()
                 .timestamp(new Timestamp(System.currentTimeMillis()))
