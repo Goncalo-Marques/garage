@@ -4,12 +4,13 @@ import api.mappings.garage.vehicle.CreateVehicleRequest;
 import api.mappings.garage.vehicle.GetVehicleResponse;
 import api.retrofit.garage.Vehicle;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.io.IOException;
 
-import static api.garage.helper.VehicleResquests.vehiclePositive;
+import static api.garage.helper.VehicleRequests.vehiclePositive;
 import static api.validators.ResponseBodyValidator.assertBodyNotNull;
 import static api.validators.ResponseBodyValidator.assertID;
 import static api.validators.ResponseCodeValidator.*;
@@ -44,5 +45,26 @@ public class CreateVehiclePositiveTests {
         assertID(getResponse.body().getId(), createdVehicleID);
     }
 
-    // TODO: create valid plate (data set)
+    @DataProvider(name = "dataProviderValidPlates")
+    public Object[][] dataProviderValidPlates() {
+        return new Object[][]{
+                {"ZZ-99-ZZ"}, {"99-ZZ-99"}, {"99-99-ZZ"}, {"ZZ-99-99"}};
+    }
+
+    @Test(description = "ID: GT0001", dataProvider = "dataProviderValidPlates")
+    public void createVehiclesWithValidPlatesTest(String vehiclePlateToTest) throws IOException {
+        CreateVehicleRequest createdVehicleRequest = vehiclePositive();
+        createdVehicleRequest.setPlate(vehiclePlateToTest);
+
+        Response<Integer> createResponse = Vehicle.createVehicle(createdVehicleRequest);
+        assertBodyNotNull(createResponse);
+        createdVehicleID = createResponse.body();
+        assertCreated(createResponse);
+
+        Response<GetVehicleResponse> getResponse = Vehicle.getVehicleByID(createdVehicleID);
+        assertOk(getResponse);
+
+        assertVehicleResponseWithCreateRequest(getResponse.body(), createdVehicleRequest);
+        assertID(getResponse.body().getId(), createdVehicleID);
+    }
 }
