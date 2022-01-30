@@ -10,7 +10,7 @@ public class VehicleRequests {
                 .year(2012)
                 .type("Electric")
                 .plate("GG-04-20")
-                .active(false)
+                .active(true)
                 .build();
     }
 }
