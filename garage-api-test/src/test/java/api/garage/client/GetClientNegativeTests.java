@@ -34,6 +34,7 @@ public class GetClientNegativeTests {
     public void getNonExistentClientTest() throws IOException {
         ClientRequest client = clientPositive();
 
+        // TODO: erro de java!!!!
         Response<Integer> createResponse = Client.createClient(client);
         assertCreated(createResponse);
         createdClientID = createResponse.body();
