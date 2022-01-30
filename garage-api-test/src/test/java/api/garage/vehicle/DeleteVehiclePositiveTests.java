@@ -10,7 +10,7 @@ import retrofit2.Response;
 
 import java.io.IOException;
 
-import static api.garage.helper.VehicleResquests.vehiclePositive;
+import static api.garage.helper.VehicleRequests.vehiclePositive;
 import static api.validators.ResponseCodeValidator.*;
 
 public class DeleteVehiclePositiveTests {

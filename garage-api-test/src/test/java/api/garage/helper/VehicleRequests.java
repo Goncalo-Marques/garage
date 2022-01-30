@@ -2,7 +2,7 @@ package api.garage.helper;
 
 import api.mappings.garage.vehicle.CreateVehicleRequest;
 
-public class VehicleResquests {
+public class VehicleRequests {
     public static CreateVehicleRequest vehiclePositive() {
         return CreateVehicleRequest.builder()
                 .brand("Tesla")

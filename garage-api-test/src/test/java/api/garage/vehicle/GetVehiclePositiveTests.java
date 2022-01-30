@@ -11,7 +11,7 @@ import retrofit2.Response;
 import java.io.IOException;
 import java.util.List;
 
-import static api.garage.helper.VehicleResquests.vehiclePositive;
+import static api.garage.helper.VehicleRequests.vehiclePositive;
 import static api.validators.ListValidator.assertListHasSize;
 import static api.validators.ListValidator.assertListNotEmpty;
 import static api.validators.ResponseBodyValidator.assertBodyNotNull;

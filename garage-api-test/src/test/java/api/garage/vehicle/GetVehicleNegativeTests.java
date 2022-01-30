@@ -12,7 +12,7 @@ import java.io.IOException;
 
 import static api.garage.helper.ErrorVehicleResponses.errorVehicleInvalidID;
 import static api.garage.helper.ErrorVehicleResponses.errorVehicleNotFound;
-import static api.garage.helper.VehicleResquests.vehiclePositive;
+import static api.garage.helper.VehicleRequests.vehiclePositive;
 import static api.retrofit.garage.Error.getErrorResponse;
 import static api.validators.ErrorResponseValidator.assertErrorResponse;
 import static api.validators.ResponseBodyValidator.assertIDNotNull;
