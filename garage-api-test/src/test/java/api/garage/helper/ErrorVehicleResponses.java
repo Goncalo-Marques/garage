@@ -15,6 +15,16 @@ public class ErrorVehicleResponses {
                 .build();
     }
 
+    public static ErrorResponse errorVehicleInvalidBodyByID(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid body")
+                .path("/vehicle/" + vehicleID)
+                .build();
+    }
+
     public static ErrorResponse errorVehicleInvalidID(Integer vehicleID) {
         return ErrorResponse.builder()
                 .timestamp(new Timestamp(System.currentTimeMillis()))
@@ -35,6 +45,16 @@ public class ErrorVehicleResponses {
                 .build();
     }
 
+    public static ErrorResponse errorVehicleInvalidPlateByID(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid Plate")
+                .path("/vehicle/" + vehicleID)
+                .build();
+    }
+
     public static ErrorResponse errorVehicleDuplicatedPlate() {
         return ErrorResponse.builder()
                 .timestamp(new Timestamp(System.currentTimeMillis()))
@@ -42,6 +62,16 @@ public class ErrorVehicleResponses {
                 .error("Bad Request")
                 .message("Duplicated Plate")
                 .path("/vehicle")
+                .build();
+    }
+
+    public static ErrorResponse errorVehicleDuplicatedPlateByID(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Duplicated Plate")
+                .path("/vehicle/" + vehicleID)
                 .build();
     }
 
@@ -55,6 +85,16 @@ public class ErrorVehicleResponses {
                 .build();
     }
 
+    public static ErrorResponse errorVehicleInvalidYearByID(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid Year")
+                .path("/vehicle/" + vehicleID)
+                .build();
+    }
+
     public static ErrorResponse errorVehicleInvalidActiveStatus() {
         return ErrorResponse.builder()
                 .timestamp(new Timestamp(System.currentTimeMillis()))
@@ -62,6 +102,16 @@ public class ErrorVehicleResponses {
                 .error("Bad Request")
                 .message("Invalid Active status")
                 .path("/vehicle")
+                .build();
+    }
+
+    public static ErrorResponse errorVehicleInvalidActiveStatusByID(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid Active status")
+                .path("/vehicle/" + vehicleID)
                 .build();
     }
 
