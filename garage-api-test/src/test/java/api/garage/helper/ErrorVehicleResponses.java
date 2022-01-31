@@ -135,7 +135,7 @@ public class ErrorVehicleResponses {
                 .build();
     }
 
-    public static ErrorResponse errorVehicleAlreadyAddedToClientNotFound(Integer vehicleID, Integer clientID) {
+    public static ErrorResponse errorVehicleAlreadyHasClient(Integer vehicleID, Integer clientID) {
         return ErrorResponse.builder()
                 .timestamp(new Timestamp(System.currentTimeMillis()))
                 .status(400)
