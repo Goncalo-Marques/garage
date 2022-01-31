@@ -5,8 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,6 +19,6 @@ public class ClientRequest {
     private String country;
     private Integer phoneNumber;
     private Integer nif;
-    private LocalDate birthDate;
-    private LocalDate clientDate;
+    private String birthDate;
+    private String clientDate;
 }

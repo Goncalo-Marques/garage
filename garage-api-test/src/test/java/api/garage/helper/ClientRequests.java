@@ -2,9 +2,12 @@ package api.garage.helper;
 
 import api.mappings.garage.client.ClientRequest;
 
-import java.time.LocalDate;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class ClientRequests {
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
+
     public static ClientRequest clientPositive() {
         return ClientRequest.builder()
                 .firstName("Diogo")
@@ -15,8 +18,8 @@ public class ClientRequests {
                 .country("Portugal")
                 .phoneNumber(912354789)
                 .nif(260128857)
-                .birthDate(LocalDate.of(1992, 07, 03))
-                .clientDate(LocalDate.now())
+                .birthDate("1992-07-03")
+                .clientDate(new SimpleDateFormat(DATE_FORMAT).format(new Date(System.currentTimeMillis())))
                 .build();
     }
 }
