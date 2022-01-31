@@ -144,4 +144,34 @@ public class ErrorVehicleResponses {
                 .path("/vehicle/" + vehicleID + "/client/" + clientID)
                 .build();
     }
+
+    public static ErrorResponse errorRemovingVehicleFromClientInvalidID(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Invalid ID")
+                .path("/vehicle/" + vehicleID + "/client/")
+                .build();
+    }
+
+    public static ErrorResponse errorRemovingVehicleFromClientNotFound(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(404)
+                .error("Not Found")
+                .message("Not found")
+                .path("/vehicle/" + vehicleID + "/client/")
+                .build();
+    }
+
+    public static ErrorResponse errorVehicleAlreadyHasNoClient(Integer vehicleID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Vehicle already has no client")
+                .path("/vehicle/" + vehicleID + "/client/")
+                .build();
+    }
 }

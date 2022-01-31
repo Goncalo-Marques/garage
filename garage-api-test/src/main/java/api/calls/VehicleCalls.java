@@ -38,5 +38,5 @@ public interface VehicleCalls {
     Call<Void> deleteVehicle(@Path(ID) Integer vehicleID);
 
     @DELETE(REMOVE_VEHICLE_CLIENT)
-    Call<Void> removeVehicleFromClient(@Path(ID) Integer vehicleID);
+    Call<Void> removeVehicleFromClient(@Path(VEHICLE_ID) Integer vehicleID);
 }
