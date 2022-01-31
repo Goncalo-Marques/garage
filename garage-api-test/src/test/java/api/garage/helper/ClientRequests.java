@@ -1,16 +1,11 @@
 package api.garage.helper;
 
-import api.garage.client.CreateClientNegativeTests;
 import api.mappings.garage.client.ClientRequest;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
-import java.util.Date;
-
-import static java.time.LocalDate.now;
 
 public class ClientRequests {
-    public static ClientRequest clientPositive(){
+    public static ClientRequest clientPositive() {
         return ClientRequest.builder()
                 .firstName("Diogo")
                 .lastName("Jesus")
