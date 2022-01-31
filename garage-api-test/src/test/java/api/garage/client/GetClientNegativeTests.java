@@ -61,6 +61,15 @@ public class GetClientNegativeTests {
         ErrorResponse expectedResponse = errorClientInvalidID(clientIDToTest);
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
+
+    @Test(description = "ID: GT001")
+    public void getClientWithNegativeIDTest() throws IOException {
+        Integer clientIdToTest = -50;
+        Response<ClientResponse> getResponse = Client.getClientByID(clientIdToTest);
+
+        ErrorResponse expectedResponse = errorClientInvalidID(clientIdToTest);
+        assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
+    }
 }
 
 

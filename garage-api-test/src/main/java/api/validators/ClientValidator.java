@@ -2,6 +2,10 @@ package api.validators;
 
 import api.mappings.garage.client.ClientRequest;
 import api.mappings.garage.client.ClientResponse;
+import api.mappings.garage.vehicle.CreateVehicleRequest;
+import api.mappings.garage.vehicle.GetVehicleResponse;
+
+import java.time.LocalDate;
 
 import static api.validators.ListValidator.assertListHasSize;
 import static org.hamcrest.MatcherAssert.assertThat;
