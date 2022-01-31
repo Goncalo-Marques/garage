@@ -124,4 +124,24 @@ public class ErrorVehicleResponses {
                 .path("/vehicle/" + vehicleID)
                 .build();
     }
+
+    public static ErrorResponse errorAddingVehicleToClientNotFound(Integer vehicleID, Integer clientID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(404)
+                .error("Not Found")
+                .message("Not found")
+                .path("/vehicle/" + vehicleID + "/client/" + clientID)
+                .build();
+    }
+
+    public static ErrorResponse errorVehicleAlreadyAddedToClientNotFound(Integer vehicleID, Integer clientID) {
+        return ErrorResponse.builder()
+                .timestamp(new Timestamp(System.currentTimeMillis()))
+                .status(400)
+                .error("Bad Request")
+                .message("Vehicle already has a client")
+                .path("/vehicle/" + vehicleID + "/client/" + clientID)
+                .build();
+    }
 }
