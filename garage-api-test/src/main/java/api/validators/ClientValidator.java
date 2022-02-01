@@ -31,22 +31,17 @@ public class ClientValidator {
         assertThat("City is not the expected", actual.getCity(), is(expected.getCity()));
         assertThat("Country is not the expected", actual.getCountry(), is(expected.getCountry()));
 
-        // TODO VÊ SE ESTE ASSERT DO TELEMOVEL ESTA BEM
         assertThat("Phone number is not the expected", actual.getPhoneNumber(), is(expected.getPhoneNumber()));
         Matcher phoneNumberPattern = Pattern.compile("^([0-9]{9})$").matcher(String.valueOf(actual.getPhoneNumber()));
         assertThat("Phone number is not valid", phoneNumberPattern.matches());
 
-        // TODO VÊ SE ESTE ASSERT DO NIF ESTA BEM
         assertThat("NIF is not the expected", actual.getNif(), is(expected.getNif()));
         Matcher NIFPatern = Pattern.compile("^([0-9]{9})$").matcher(String.valueOf(actual.getNif()));
         assertThat("NIF number is not valid", NIFPatern.matches());
 
-        // TODO VÊ SE ESTE ASSERT DA DATA ESTA BEM
         assertThat("Birth Date is not the expected", actual.getBirthDate(), is(expected.getBirthDate()));
         if (actual.getBirthDate() != null)
             assertThat("Birth date is not valid", actual.getBirthDate(), is(lessThanOrEqualTo(String.valueOf(LocalDate.now()))));
-
-        // TODO VÊ SE ESTE ASSERT DA DATA ESTA BEM
 
         assertThat("Client Date is not the expected", actual.getClientDate(), is(expected.getClientDate()));
         if (actual.getClientDate() != null)
