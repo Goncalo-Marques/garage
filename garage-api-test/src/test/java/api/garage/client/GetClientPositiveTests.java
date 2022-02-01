@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import retrofit2.Response;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.List;
 
 import static api.garage.helper.ClientRequests.clientPositive;
@@ -54,7 +55,7 @@ public class GetClientPositiveTests {
     }
 
     @Test(description = "ID: GT0001")
-    public void getClientByIDTest() throws IOException {
+    public void getClientByIDTest() throws IOException, ParseException {
         Response<ClientResponse> getResponse = Client.getClientByID(createdClientID);
         assertOk(getResponse);
 

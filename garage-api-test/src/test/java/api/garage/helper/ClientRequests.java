@@ -6,7 +6,6 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 
 public class ClientRequests {
-    public static final String DATE_FORMAT = "yyyy-MM-dd";
 
     public static ClientRequest clientPositive() {
         return ClientRequest.builder()
@@ -19,7 +18,7 @@ public class ClientRequests {
                 .phoneNumber(912354789)
                 .nif(260128857)
                 .birthDate("1992-07-03")
-                .clientDate(new SimpleDateFormat(DATE_FORMAT).format(new Date(System.currentTimeMillis())))
+                .clientDate(new SimpleDateFormat("yyyy-MM-dd").format(new Date(System.currentTimeMillis())))
                 .build();
     }
 }

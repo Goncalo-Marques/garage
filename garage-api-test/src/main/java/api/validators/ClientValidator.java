@@ -3,6 +3,9 @@ package api.validators;
 import api.mappings.garage.client.ClientRequest;
 import api.mappings.garage.client.ClientResponse;
 
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,7 +17,7 @@ import static org.hamcrest.Matchers.nullValue;
 import static org.hamcrest.Matchers.*;
 
 public class ClientValidator {
-    public static void assertClientResponse(ClientResponse actual, ClientRequest expected) {
+    public static void assertClientResponse(ClientResponse actual, ClientRequest expected) throws ParseException {
         if (expected == null) {
             assertThat("Response should be null", actual, nullValue());
             return;
@@ -30,15 +33,11 @@ public class ClientValidator {
 
         // TODO VÊ SE ESTE ASSERT DO TELEMOVEL ESTA BEM
         assertThat("Phone number is not the expected", actual.getPhoneNumber(), is(expected.getPhoneNumber()));
-        if (actual.getPhoneNumber() != null)
-            assertThat("Client phone number can only have 9 digits", String.valueOf(actual.getPhoneNumber()).length(), is(String.valueOf(expected.getPhoneNumber()).length()));
         Matcher phoneNumberPattern = Pattern.compile("^([0-9]{9})$").matcher(String.valueOf(actual.getPhoneNumber()));
         assertThat("Phone number is not valid", phoneNumberPattern.matches());
 
         // TODO VÊ SE ESTE ASSERT DO NIF ESTA BEM
         assertThat("NIF is not the expected", actual.getNif(), is(expected.getNif()));
-        if (actual.getNif() != null)
-            assertThat("Client phone number can only have 9 digits", String.valueOf(actual.getNif()).length(), is(String.valueOf(expected.getNif()).length()));
         Matcher NIFPatern = Pattern.compile("^([0-9]{9})$").matcher(String.valueOf(actual.getNif()));
         assertThat("NIF number is not valid", NIFPatern.matches());
 
@@ -48,12 +47,11 @@ public class ClientValidator {
             assertThat("Birth date is not valid", actual.getBirthDate(), is(lessThanOrEqualTo(String.valueOf(LocalDate.now()))));
 
         // TODO VÊ SE ESTE ASSERT DA DATA ESTA BEM
+
         assertThat("Client Date is not the expected", actual.getClientDate(), is(expected.getClientDate()));
         if (actual.getClientDate() != null)
-            assertThat("Client date is not valid", actual.getClientDate(), is(lessThanOrEqualTo(String.valueOf(LocalDate.now()))));
+            assertThat("Client date is not valid", new SimpleDateFormat("yyyy-MM-dd").parse(actual.getClientDate()), is(lessThanOrEqualTo(new Date(System.currentTimeMillis()))));
 
         assertListHasSize(actual.getVehicles(), 0);
     }
-
-    //TODO validar o codigo postal numero de telefone, NIF, datas
 }
