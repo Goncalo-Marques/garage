@@ -30,7 +30,7 @@ public class DeleteVehicleNegativeTests {
         createdVehicleID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0056")
     public void deleteNonExistentVehicleTest() throws IOException {
         VehicleRequest vehicle = vehiclePositive();
 
@@ -51,7 +51,7 @@ public class DeleteVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0057")
     public void deleteVehicleWithID0Test() throws IOException {
         Integer vehicleIDToTest = 0;
         Response<Void> getResponse = Vehicle.deleteVehicleByID(vehicleIDToTest);
@@ -61,7 +61,7 @@ public class DeleteVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0058")
     public void deleteVehicleWithNegativeIDTest() throws IOException {
         Integer vehicleIDToTest = -100;
         Response<Void> getResponse = Vehicle.deleteVehicleByID(vehicleIDToTest);

@@ -45,7 +45,7 @@ public class DeleteClientPositiveTests {
         createdVehicleID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0017")
     public void deleteClientTest() throws IOException {
         Integer clientIdToTest = createdClientID;
 
@@ -57,7 +57,7 @@ public class DeleteClientPositiveTests {
         assertNotFound(getResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0018")
     public void deleteClientRemoveClientTrueTest() throws IOException {
         Integer clientIDToTest = createdClientID;
         Integer vehicleIDToTest;
@@ -85,7 +85,7 @@ public class DeleteClientPositiveTests {
         assertNotFound(getResponseVehicle);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0019")
     public void deleteClientRemoveClientFalseTest() throws IOException {
         Integer clientIDToTest = createdClientID;
         Integer vehicleIDToTest;
@@ -112,7 +112,7 @@ public class DeleteClientPositiveTests {
         assertOk(getResponseVehicle);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0020")
     public void deleteClientRemoveClientNullTest() throws IOException {
         Integer clientIDToTest = createdClientID;
         Integer vehicleIDToTest;

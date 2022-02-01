@@ -50,7 +50,7 @@ public class UpdateVehicleNegativeTests {
         createdVehicleRequest = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0070")
     public void updateNonExistentVehicleTest() throws IOException {
         Integer vehicleIDToTest = createdVehicleID;
 
@@ -67,7 +67,7 @@ public class UpdateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0071")
     public void updateVehicleWithID0Test() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         Integer vehicleIDToTest = 0;
@@ -79,7 +79,7 @@ public class UpdateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0072")
     public void updateVehicleWithNegativeIDTest() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         Integer vehicleIDToTest = -100;
@@ -92,7 +92,7 @@ public class UpdateVehicleNegativeTests {
     }
 
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0073")
     public void updateVehicleNullFieldsTest() throws IOException {
         VehicleRequest updatedVehicleRequest = VehicleRequest.builder().build();
 
@@ -103,7 +103,7 @@ public class UpdateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0074")
     public void updateVehicleDuplicatedPlateTest() throws IOException {
         String vehiclePlateToTest = "ZZ-99-99";
 
@@ -131,7 +131,7 @@ public class UpdateVehicleNegativeTests {
                 {"ZZ-ZZ-ZZ"}, {"99-99-99"}, {""}, {null}};
     }
 
-    @Test(description = "ID: GT0001", dataProvider = "dataProviderInvalidPlates")
+    @Test(description = "ID: GT0075", dataProvider = "dataProviderInvalidPlates")
     public void updateVehicleWithInvalidPlateTest(String vehiclePlateToTest) throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setPlate(vehiclePlateToTest);
@@ -143,7 +143,7 @@ public class UpdateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0076")
     public void updateVehicleWithYearGreaterThanTodayTest() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setYear(LocalDate.now().plusYears(1).getYear());
@@ -155,7 +155,7 @@ public class UpdateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0077")
     public void updateVehicleWithEmptyActiveStatusTest() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setActive(null);

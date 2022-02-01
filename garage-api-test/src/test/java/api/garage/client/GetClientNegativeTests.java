@@ -32,7 +32,7 @@ public class GetClientNegativeTests {
         createdClientID = null;
     }
 
-    @Test(description = "ID: GT001")
+    @Test(description = "ID: GT021")
     public void getNonExistentClientTest() throws IOException {
         ClientRequest client = clientPositive();
 
@@ -53,7 +53,7 @@ public class GetClientNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT001")
+    @Test(description = "ID: GT022")
     public void getClientWithID0Test() throws IOException {
         Integer clientIDToTest = 0;
         Response<ClientResponse> getResponse = Client.getClientByID(clientIDToTest);
@@ -63,7 +63,7 @@ public class GetClientNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT001")
+    @Test(description = "ID: GT023")
     public void getClientWithNegativeIDTest() throws IOException {
         Integer clientIdToTest = -50;
         Response<ClientResponse> getResponse = Client.getClientByID(clientIdToTest);

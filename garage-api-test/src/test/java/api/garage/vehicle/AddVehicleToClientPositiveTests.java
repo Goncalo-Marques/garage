@@ -46,7 +46,7 @@ public class AddVehicleToClientPositiveTests {
         createdClientID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0046")
     public void addVehicleToClientTest() throws IOException {
         Response<Void> response = Vehicle.addVehicleToClient(createdVehicleID, createdClientID);
         assertNoContent(response);

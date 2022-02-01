@@ -45,7 +45,7 @@ public class GetVehiclePositiveTests {
         createdVehicleRequest = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0063")
     public void getAllVehiclesTest() throws IOException {
         Response<List<VehicleResponse>> getResponse = Vehicle.getAllVehicles();
         assertOk(getResponse);
@@ -55,7 +55,7 @@ public class GetVehiclePositiveTests {
         assertListHasSize(getResponse.body(), greaterThanOrEqualTo(1));
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0064")
     public void getVehicleByIDTest() throws IOException {
         Response<VehicleResponse> getResponse = Vehicle.getVehicleByID(createdVehicleID);
         assertOk(getResponse);

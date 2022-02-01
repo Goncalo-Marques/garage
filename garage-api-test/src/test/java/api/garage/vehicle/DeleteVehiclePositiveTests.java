@@ -36,7 +36,7 @@ public class DeleteVehiclePositiveTests {
         createdVehicleID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0059")
     public void deleteVehicleTest() throws IOException {
         Integer idToTest = createdVehicleID;
 

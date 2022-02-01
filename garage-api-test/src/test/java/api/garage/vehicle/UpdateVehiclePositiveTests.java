@@ -43,7 +43,7 @@ public class UpdateVehiclePositiveTests {
         createdVehicleRequest = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0078")
     public void updateVehicleTest() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setBrand("Honda");
@@ -71,7 +71,7 @@ public class UpdateVehiclePositiveTests {
                 {"ZZ-99-ZZ"}, {"99-ZZ-99"}, {"99-99-ZZ"}, {"ZZ-99-99"}};
     }
 
-    @Test(description = "ID: GT0001", dataProvider = "dataProviderValidPlates")
+    @Test(description = "ID: GT0079", dataProvider = "dataProviderValidPlates")
     public void updateVehicleWithValidPlateTest(String vehiclePlateToTest) throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setPlate(vehiclePlateToTest);
@@ -88,7 +88,7 @@ public class UpdateVehiclePositiveTests {
         assertID(getResponse.body().getId(), updateResponse.body());
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0080")
     public void updateVehicleWithYearEqualToTodayTest() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setYear(LocalDate.now().getYear());
@@ -105,7 +105,7 @@ public class UpdateVehiclePositiveTests {
         assertID(getResponse.body().getId(), updateResponse.body());
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0081")
     public void updateVehicleWithYearLessThanTodayTest() throws IOException {
         VehicleRequest updatedVehicleRequest = createdVehicleRequest;
         updatedVehicleRequest.setYear(LocalDate.now().minusYears(1).getYear());

@@ -35,7 +35,7 @@ public class CreateVehicleNegativeTests {
         createdVehicleIDs.clear();
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0047")
     public void createVehicleNullFieldsTest() throws IOException {
         VehicleRequest requestBody = VehicleRequest.builder().build();
 
@@ -47,7 +47,7 @@ public class CreateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0048")
     public void createVehicleDuplicatedPlateTest() throws IOException {
         VehicleRequest createdVehicleRequest = vehiclePositive();
 
@@ -70,7 +70,7 @@ public class CreateVehicleNegativeTests {
                 {"ZZ-ZZ-ZZ"}, {"99-99-99"}, {""}, {null}};
     }
 
-    @Test(description = "ID: GT0001", dataProvider = "dataProviderInvalidPlates")
+    @Test(description = "ID: GT0049", dataProvider = "dataProviderInvalidPlates")
     public void createVehicleWithInvalidPlateTest(String vehiclePlateToTest) throws IOException {
         VehicleRequest createdVehicleRequest = vehiclePositive();
         createdVehicleRequest.setPlate(vehiclePlateToTest);
@@ -83,7 +83,7 @@ public class CreateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0050")
     public void createVehicleWithYearGreaterThanTodayTest() throws IOException {
         VehicleRequest createdVehicleRequest = vehiclePositive();
         createdVehicleRequest.setYear(LocalDate.now().plusYears(1).getYear());
@@ -96,7 +96,7 @@ public class CreateVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0051")
     public void createVehicleWithEmptyActiveStatusTest() throws IOException {
         VehicleRequest createdVehicleRequest = vehiclePositive();
         createdVehicleRequest.setActive(null);

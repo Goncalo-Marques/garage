@@ -31,7 +31,7 @@ public class GetVehicleNegativeTests {
         createdVehicleID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0060")
     public void getNonExistentVehicleTest() throws IOException {
         VehicleRequest vehicle = vehiclePositive();
 
@@ -52,7 +52,7 @@ public class GetVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0061")
     public void getVehicleWithID0Test() throws IOException {
         Integer vehicleIDToTest = 0;
         Response<VehicleResponse> getResponse = Vehicle.getVehicleByID(vehicleIDToTest);
@@ -62,7 +62,7 @@ public class GetVehicleNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0062")
     public void getVehicleWithNegativeIDTest() throws IOException {
         Integer vehicleIDToTest = -100;
         Response<VehicleResponse> getResponse = Vehicle.getVehicleByID(vehicleIDToTest);

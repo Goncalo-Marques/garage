@@ -30,7 +30,7 @@ public class DeleteClientNegativeTests {
         createdClientID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0014")
     public void deleteNonExistentClientTest() throws IOException {
         ClientRequest client = clientPositive();
 
@@ -51,7 +51,7 @@ public class DeleteClientNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0015")
     public void deleteClientWithID0Test() throws IOException {
         Integer clientIDToTest = 0;
         Response<Void> getResponse = Client.deleteClientByID(clientIDToTest, null);
@@ -61,7 +61,7 @@ public class DeleteClientNegativeTests {
         assertErrorResponse(getErrorResponse(getResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0016")
     public void deleteClientWithNegativeIDTest() throws IOException {
         Integer clientIDToTest = -19;
         Response<Void> getResponse = Client.deleteClientByID(clientIDToTest, null);

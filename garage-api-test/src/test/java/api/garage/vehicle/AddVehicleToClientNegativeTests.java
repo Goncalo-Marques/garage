@@ -56,7 +56,7 @@ public class AddVehicleToClientNegativeTests {
         unexpectedCreatedClientID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0041")
     public void addNonExistentVehicleToNonExistentClientTest() throws IOException {
         Integer vehicleIDToTest = createdVehicleID;
         Integer clientIDToTest = createdClientID;
@@ -76,7 +76,7 @@ public class AddVehicleToClientNegativeTests {
         assertErrorResponse(getErrorResponse(response), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0042")
     public void addNonExistentVehicleToExistentClientTest() throws IOException {
         Integer vehicleIDToTest = createdVehicleID;
 
@@ -91,7 +91,7 @@ public class AddVehicleToClientNegativeTests {
         assertErrorResponse(getErrorResponse(response), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0043")
     public void addExistentVehicleToNonExistentClientTest() throws IOException {
         Integer clientIDToTest = createdClientID;
 
@@ -106,7 +106,7 @@ public class AddVehicleToClientNegativeTests {
         assertErrorResponse(getErrorResponse(response), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0044")
     public void addVehicleToClientDuplicatedTest() throws IOException {
         Response<Void> response = Vehicle.addVehicleToClient(createdVehicleID, createdClientID);
         assertNoContent(response);
@@ -118,7 +118,7 @@ public class AddVehicleToClientNegativeTests {
         assertErrorResponse(getErrorResponse(response), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0045")
     public void addVehicleToDifferentClientTest() throws IOException {
         Response<Void> response = Vehicle.addVehicleToClient(createdVehicleID, createdClientID);
         assertNoContent(response);

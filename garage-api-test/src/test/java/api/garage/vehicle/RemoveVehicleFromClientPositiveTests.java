@@ -49,7 +49,7 @@ public class RemoveVehicleFromClientPositiveTests {
         createdClientID = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0069")
     public void removeVehicleFromClientTest() throws IOException {
         Response<Void> removeResponse = Vehicle.removeVehicleFromClient(createdVehicleID);
         assertNoContent(removeResponse);

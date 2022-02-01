@@ -44,7 +44,7 @@ public class GetClientPositiveTests {
         createdClientRequest = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0024")
     public void getAllClientsTest() throws IOException {
         Response<List<ClientResponse>> getResponse = Client.getAllClients();
         assertOk(getResponse);
@@ -54,7 +54,7 @@ public class GetClientPositiveTests {
         assertListHasSize(getResponse.body(), greaterThanOrEqualTo(1));
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0025")
     public void getClientByIDTest() throws IOException, ParseException {
         Response<ClientResponse> getResponse = Client.getClientByID(createdClientID);
         assertOk(getResponse);

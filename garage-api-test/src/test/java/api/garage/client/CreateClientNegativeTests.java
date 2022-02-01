@@ -48,7 +48,7 @@ public class CreateClientNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID GT001")
+    @Test(description = "ID GT002")
     public void createClientDuplicatedNIF() throws IOException {
         ClientRequest createClientRequest = clientPositive();
 
@@ -64,7 +64,7 @@ public class CreateClientNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0003")
     public void createClientWithClientDateGreaterThanTodayTest() throws IOException {
         ClientRequest createClientRequest = clientPositive();
         createClientRequest.setClientDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now().plusDays(4))));
@@ -77,7 +77,7 @@ public class CreateClientNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0004")
     public void createClientWithBirthDateGreaterThanTodayTest() throws IOException {
         ClientRequest createClientRequest = clientPositive();
         createClientRequest.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now().plusDays(4))));
@@ -90,7 +90,7 @@ public class CreateClientNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0005")
     public void createClientWithIDTest() throws IOException {
         ClientRequest createClientRequest = clientPositive();
         createClientRequest.setId(2);
@@ -104,7 +104,7 @@ public class CreateClientNegativeTests {
     }
 
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0006")
     public void createClientWithInvalidPostalCode() throws IOException {
         ClientRequest createClientRequest = clientPositive();
         createClientRequest.setPostalCode("3004147");
@@ -117,7 +117,7 @@ public class CreateClientNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0007")
     public void createClientWithInvalidPhoneNumber() throws IOException {
         ClientRequest createClientRequest = clientPositive();
         createClientRequest.setPhoneNumber(9326459);

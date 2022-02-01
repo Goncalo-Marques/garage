@@ -46,7 +46,7 @@ public class UpdateClientPositiveTests {
         createdClientRequest = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0036")
     public void updateClientTest() throws IOException, ParseException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setFirstName("Jose");
@@ -72,7 +72,7 @@ public class UpdateClientPositiveTests {
         assertID(getResponse.body().getId(), updateResponse.body());
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0037")
     public void updateClientWithBirthDateEqualToTodayTest() throws IOException, ParseException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now())));
@@ -89,7 +89,7 @@ public class UpdateClientPositiveTests {
         assertID(getResponse.body().getId(), updateResponse.body());
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0038")
     public void updateClientWithBirthDateLessThanTodayTest() throws IOException, ParseException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now().minusDays(25))));
@@ -106,7 +106,7 @@ public class UpdateClientPositiveTests {
         assertID(getResponse.body().getId(), updateResponse.body());
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0039")
     public void updateClientWithClientDateEqualToTodayTest() throws IOException, ParseException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setClientDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now())));
@@ -123,7 +123,7 @@ public class UpdateClientPositiveTests {
         assertID(getResponse.body().getId(), updateResponse.body());
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0040")
     public void updateClientWithClientDateLessThanTodayTest() throws IOException, ParseException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setClientDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now().minusDays(25))));

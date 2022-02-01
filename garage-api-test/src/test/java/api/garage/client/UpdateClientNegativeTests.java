@@ -51,7 +51,7 @@ public class UpdateClientNegativeTests {
         createdClientRequest = null;
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0026")
     public void updateNonExistentClientTest() throws IOException {
         Integer clientIDToTest = createdClientID;
 
@@ -68,7 +68,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0027")
     public void updateClientWithID0Test() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         Integer clientIDToTest = 0;
@@ -80,7 +80,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0028")
     public void updateClientWithNegativeIDTest() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         Integer clientIDToTest = -126;
@@ -92,7 +92,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0029")
     public void updateClientNullFieldsTest() throws IOException {
         ClientRequest updatedClientRequest = ClientRequest.builder().build();
 
@@ -103,7 +103,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0030")
     public void updateClientDuplicatedNIFTest() throws IOException {
         Integer clientNIFToTest = 260128856;
 
@@ -124,7 +124,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0031")
     public void updateClientWithBirthDateGreaterThanTodayTest() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setBirthDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now().plusDays(4))));
@@ -136,7 +136,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(updateResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0032")
     public void updateClientWithClientDateGreaterThanTodayTest() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         updatedClientRequest.setClientDate(new SimpleDateFormat("yyyy-MM-dd").format(Date.valueOf(LocalDate.now().plusDays(4))));
@@ -149,7 +149,7 @@ public class UpdateClientNegativeTests {
     }
 
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0033")
     public void updateClientWithIDTest() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         createdClientRequest.setId(2);
@@ -162,7 +162,7 @@ public class UpdateClientNegativeTests {
     }
 
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0034")
     public void updateClientWithInvalidPostalCode() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         createdClientRequest.setPostalCode("3004147");
@@ -174,7 +174,7 @@ public class UpdateClientNegativeTests {
         assertErrorResponse(getErrorResponse(createResponse), expectedResponse);
     }
 
-    @Test(description = "ID: GT0001")
+    @Test(description = "ID: GT0035")
     public void updateClientWithInvalidPhoneNumber() throws IOException {
         ClientRequest updatedClientRequest = createdClientRequest;
         createdClientRequest.setPhoneNumber(9326459);
